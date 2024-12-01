@@ -30,7 +30,7 @@ int min(int a,int b){
 
 typedef Tree* pTree;
 
-pTree createTree(int id, long int capacity, long int consumption){
+pTree createTree(int id,long int capacity, long int consumption){
   pTree pNew=malloc(sizeof(Tree));
   if (pNew==NULL){
     exit(1);
@@ -112,6 +112,7 @@ pTree balancingTree(pTree pRoot){
   return pRoot;
 }
 
+
 pTree insertTree(pTree pRoot, pTree pNew, int* h){
   if (pNew==NULL){
     exit(2);
@@ -119,6 +120,12 @@ pTree insertTree(pTree pRoot, pTree pNew, int* h){
   else if (pRoot==NULL){
     *h=1;
     return pNew;
+  }
+  else if (pRoot->id==pNew->id){
+    pRoot->capacity+=pNew->capacity;
+    pRoot->consumption+=pNew->consumption;
+    *h=0;
+    return pRoot;
   }
   else if(pNew->id<pRoot->id){
     pRoot->pLeft=insertTree(pRoot->pLeft,pNew,h);
@@ -153,16 +160,19 @@ void infix(pTree pRoot){
   infix(pRoot->pRight);
 }
 
+
 int main() {
-    pTree root = NULL;
-    int id, h;
+    pTree pRoot = NULL;
+    int id,son,c,h=0;
     long int capacity,consumption; 
 
-    while (scanf("%d;%li;%li", &id, &capacity, &consumption) == 3) {
-        pTree newNode = createTree(id,capacity,consumption);
-        root = insertTree(root, newNode, &h);
+    while (scanf("%d;%d;%d;%li;%li", &id, &son, &c, &capacity, &consumption) == 5) {
+        if (id!=0 && son==0){
+          pTree pNew = createTree(id,capacity,consumption);
+          pRoot = insertTree(pRoot, pNew, &h);
+        }
     }
-    infix(root);
+    infix(pRoot);
 
     return 0;
 }
