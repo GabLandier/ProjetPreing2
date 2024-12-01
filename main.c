@@ -5,6 +5,8 @@ typedef struct _tree{
   int id;
   struct _tree* pLeft;
   struct _tree* pRight;
+  long int capacity;
+  long int consumption;
   int balance;
 }Tree;
 
@@ -28,7 +30,7 @@ int min(int a,int b){
 
 typedef Tree* pTree;
 
-pTree createTree(int id){
+pTree createTree(int id, long int capacity, long int consumption){
   pTree pNew=malloc(sizeof(Tree));
   if (pNew==NULL){
     exit(1);
@@ -36,6 +38,8 @@ pTree createTree(int id){
   pNew->id=id;
   pNew->pLeft=NULL;
   pNew->pRight=NULL;
+  pNew->capacity=capacity;
+  pNew->consumption=consumption;
   pNew->balance=0;
   return pNew;
 }
@@ -140,6 +144,26 @@ pTree insertTree(pTree pRoot, pTree pNew, int* h){
   return pRoot;
 }
 
-int main(){
+void infix(pTree pRoot){
+  if (pRoot==NULL){
+    return;
+  }
+  infix(pRoot->pLeft);
+  printf("%d : %li : %li\n",pRoot->id, pRoot->capacity, pRoot->consumption);
+  infix(pRoot->pRight);
+}
+
+int main() {
+    pTree root = NULL;
+    int id, h;
+    long int capacity,consumption; 
+
+    while (scanf("%d;%li;%li", &id, &capacity, &consumption) == 3) {
+        pTree newNode = createTree(id,capacity,consumption);
+        root = insertTree(root, newNode, &h);
+    }
+    infix(root);
+
     return 0;
 }
+
