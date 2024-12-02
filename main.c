@@ -2,10 +2,10 @@
 
 int main() {
   pTree pRoot = NULL;
-  int id,t,son,c,h=0;
+  int power,id,t,son,c,h=0;
   long int capacity,consumption; 
 
-  while (scanf("%d;%d;%d;%li;%li;%d", &id, &son, &c, &capacity, &consumption, &t) == 6) {
+  while (scanf("%d;%d;%d;%d;%li;%li;%d", &power, &id, &son, &c, &capacity, &consumption, &t) == 7) {
     if (t==1){
       if (id!=0 && son==0){
         pTree pNew = createTree(id,capacity,consumption);
