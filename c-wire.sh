@@ -1,3 +1,8 @@
+gcc -o hv hv.c
+gcc -o all all.c
+gcc -o indiv indiv.c
+gcc -o comp comp.c
+
 if [[ "$#" == "3" ]] ; then
 	if [[ "$1" == "-h" || "$2" == "-h" || "$3" == "-h" ]] ; then
 		echo "Voila l'aide"

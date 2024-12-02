@@ -70,8 +70,8 @@ pTree rightRotation(pTree pRoot){
   pPivot->pRight=pRoot;
   b_r=pRoot->balance;
   b_p=pPivot->balance;
-  pRoot->balance=b_r-max(b_p,0)+1;
-  pPivot->balance=min(b_r+2,min(b_r+b_p+2,b_p+1));
+  pRoot->balance=b_r-min(b_p,0)+1;
+  pPivot->balance=max(b_r+2,max(b_r+b_p+2,b_p+1));
   pRoot=pPivot;
   return pRoot;
 }
