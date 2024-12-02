@@ -1,14 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-typedef struct _tree{
-  int id;
-  struct _tree* pLeft;
-  struct _tree* pRight;
-  long int capacity;
-  long int consumption;
-  int balance;
-}Tree;
+#include "bibli.h"
 
 int max(int a,int b){
   if (a>b){
@@ -27,8 +17,6 @@ int min(int a,int b){
     return b;
   }
 }
-
-typedef Tree* pTree;
 
 pTree createTree(int id,long int capacity, long int consumption){
   pTree pNew=malloc(sizeof(Tree));
@@ -160,20 +148,11 @@ void infix(pTree pRoot){
   infix(pRoot->pRight);
 }
 
-
-int main() {
-    pTree pRoot = NULL;
-    int id,son,c,h=0;
-    long int capacity,consumption; 
-
-    while (scanf("%d;%d;%d;%li;%li", &id, &son, &c, &capacity, &consumption) == 5) {
-        if (id!=0 && c==0){
-          pTree pNew = createTree(id,capacity,consumption);
-          pRoot = insertTree(pRoot, pNew, &h);
-        }
-    }
-    infix(pRoot);
-
-    return 0;
+void freeAVL(pTree pRoot){
+  if (pRoot==NULL){
+    return;
+  }
+  freeAVL(pRoot->pLeft);
+  freeAVL(pRoot->pRight);
+  free(pRoot);
 }
-
