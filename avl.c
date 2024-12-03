@@ -68,7 +68,7 @@ pTree doubleLeftRotation(pTree pRoot){
   if (pRoot==NULL){
     exit(5);
   }
-  pRoot->pRight=rightRotation(pRoot->pRight);
+  pRoot->pRight = rightRotation(pRoot->pRight);
   return leftRotation(pRoot);
 }
 
@@ -76,28 +76,28 @@ pTree doubleRightRotation(pTree pRoot){
   if (pRoot==NULL){
     exit(6);
   }
-  pRoot->pLeft=leftRotation(pRoot->pLeft);
+  pRoot->pLeft = leftRotation(pRoot->pLeft);
   return rightRotation(pRoot);
 }
 
 pTree balancingTree(pTree pRoot){
-  if (pRoot->balance>=2){
-    if (pRoot->pRight->balance>=0){
+  if (pRoot->balance >= 2){
+    if (pRoot->pRight->balance >= 0){
       return leftRotation(pRoot);
     }
     else{
       return doubleLeftRotation(pRoot);
     }
   }
-  else if (pRoot->balance <=-2){
-    if (pRoot->pLeft->balance<=0){
+  else if (pRoot->balance <= -2){
+    if (pRoot->pLeft->balance <= 0){
       return rightRotation(pRoot);
     }
     else{
-      return doubleLeftRotation(pRoot);
+      return doubleRightRotation(pRoot);
     }
   }
-  return pRoot;
+  return pRoot; 
 }
 
 

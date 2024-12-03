@@ -1,4 +1,24 @@
-make
+#!/bin/bash
+
+EXECUTABLE="prg"
+
+SOURCE="Makefile"
+
+if [ ! -f "./$EXECUTABLE" ]; then
+    echo "L'exécutable '$EXECUTABLE' est introuvable. Tentative de compilation..."
+    if [ -f "./$SOURCE" ]; then
+        make
+        if [ $? -eq 0 ]; then
+            echo "Compilation réussie. L'exécutable '$EXECUTABLE' a été généré."
+        else
+            echo "Erreur : la compilation a échoué."
+            exit 1
+        fi
+    else
+        echo "Erreur : le fichier source '$SOURCE' est introuvable."
+        exit 1
+    fi
+fi
 
 if [[ "$#" == "3" ]] ; then
 	if [[ "$1" == "-h" || "$2" == "-h" || "$3" == "-h" ]] ; then
@@ -19,7 +39,9 @@ if [[ "$#" == "3" ]] ; then
 				cat "$1" | cut -d ';' -f 1,4,5,6,7,8 | tail -n +2 | tr '-' '0' | awk '{printf("%s;3\n", $0);}' | ./prg
 				;;
 			"lv all")
-				cat "$1" | cut -d ';' -f 1,4,5,6,7,8 | tail -n +2 | tr '-' '0' | awk '{printf("%s;4\n", $0);}' | ./prg
+				cat "$1" | cut -d ';' -f 1,4,5,6,7,8 | tail -n +2 | tr '-' '0' | awk '{printf("%s;4\n", $0);}' | sort -t ';' -k 5,5nr > lv_all_minmax.csv
+				cat lv_all_minmax.csv | ./prg
+				rm lv_all_minmax.csv
 				;;
 			*)
 				echo "Mauvaise combinaison"
@@ -46,8 +68,10 @@ elif [[ "$#" == "4" ]] ; then
 				cat "$1" | cut -d ';' -f 1,4,5,6,7,8 | tail -n +2 | tr '-' '0' | awk '{printf("%s;3\n", $0);}' | awk -F';' -v col4="$4" '$1==col4' | ./prg
 				;;
 			"lv all")
-				cat "$1" | cut -d ';' -f 1,4,5,6,7,8 | tail -n +2 | tr '-' '0' | awk '{printf("%s;4\n", $0);}' | awk -F';' -v col4="$4" '$1==col4' | ./prg
-				;;
+				cat "$1" | cut -d ';' -f 1,4,5,6,7,8 | tail -n +2 | tr '-' '0' | awk '{printf("%s;4\n", $0);}' | awk -F';' -v col4="$4" '$1==col4' | sort -t ';' -k 5,5nr > lv_all_minmax.csv
+				cat lv_all_minmax.csv | ./prg
+				rm lv_all_minmax.csv
+			;;
 			*)
 				echo "Mauvaise combinaison"
 				;;
@@ -76,7 +100,9 @@ elif [[ "$#" == "5" ]] ; then
 				cat "$1" | cut -d ';' -f 1,4,5,6,7,8 | tail -n +2 | tr '-' '0' | awk '{printf("%s;3\n", $0);}' | awk -F';' -v col4="$4" '$1==col4' | ./prg
 				;;
 			"lv all")
-				cat "$1" | cut -d ';' -f 1,4,5,6,7,8 | tail -n +2 | tr '-' '0' | awk '{printf("%s;4\n", $0);}' | awk -F';' -v col4="$4" '$1==col4' | ./prg
+				cat "$1" | cut -d ';' -f 1,4,5,6,7,8 | tail -n +2 | tr '-' '0' | awk '{printf("%s;4\n", $0);}' | awk -F';' -v col4="$4" '$1==col4' | sort -t ';' -k 5,5nr > lv_all_minmax.csv
+				cat lv_all_minmax.csv | ./prg
+				rm lv_all_minmax.csv
 				;;
 			*)
 				echo "Mauvaise combinaison"
