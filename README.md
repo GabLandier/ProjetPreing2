@@ -43,16 +43,6 @@ L'option "-h" peut vous aider à avoir plus d'aide.
 
 3) Le fichier .csv contenant le résultat de l'éxecution est créée.
 
-## Fichier PDF
-
-Il contiendra aussi un document au format PDF
-présentant la répartition des tâches au sein du groupe, 
-
-le planning de réalisation, et les limitations fonctionnelles de votre application
-(la liste de ce qui n’est pas implémenté, et/ou de ce qui est implémenté mais qui
-ne fonctionne pas correctement/totalement)
-
-
 
 ## Auteurs
 
