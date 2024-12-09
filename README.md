@@ -14,18 +14,47 @@ les paramètres souhaité et crée en sortie un tableau contenant les résultats
 
 ## Utilisation
 
-1) 
+1) Décompresser le dossier
+2) .Dans le terminal, exectuer :
+
+```bash
+./c-wire.sh nom_du_fichier option
+```
+
+option:
 
 
-les instructions pour compiler
-pour utiliser votre application
+	• hvb
+
+	• hvb comp
+
+	• hva
+
+	• hva comp
+
+	• lv
+
+	• lv all
+
+	• lv comp
+
+	• lv indiv
+ 
+Optonnel:
+
+Le numéro de la centrale peut être ajouté à la suite de l'option.
+
+L'option "-h" peut vous aider à avoir plus d'aide.
+
+
+3) Le fichier .csv contenant le résultat de l'éxecution est créée.
 
 ## Fichier PDF
 
 Il contiendra aussi un document au format PDF
 présentant la répartition des tâches au sein du groupe, 
 
-le planning deréalisation, et les limitations fonctionnelles de votre application
+le planning de réalisation, et les limitations fonctionnelles de votre application
 (la liste de ce qui n’est pas implémenté, et/ou de ce qui est implémenté mais qui
 ne fonctionne pas correctement/totalement)
 
