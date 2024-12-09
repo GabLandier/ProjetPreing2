@@ -101,12 +101,12 @@ elif [[ "$#" == "4" ]] ; then
 				;;
 			"lv all")
 				cat "input/$1" | cut -d ';' -f 1,4,5,6,7,8 | tail -n +2 | tr '-' '0' | awk '{printf("%s;4\n", $0);}' | awk -F';' -v col4="$4" '$1==col4' | codeC/prg > temp/fichier_temp.csv
-				cat temp/fichier_temp.csv | sort -t ':' -k 2,2n > tests/lv_all.csv
+				cat temp/fichier_temp.csv | sort -t ':' -k 2,2n > tests/lv_all_$4.csv
 				if [[ $(wc -l < temp/fichier_temp.csv) -gt 20 ]] ; then
-					cat temp/fichier_temp.csv | sort -t ':' -k 2,2nr | head -n10 > tests/lv_all_minmax.csv
-					cat temp/fichier_temp.csv | sort -t ':' -k 2,2nr | tail -n10 >> tests/lv_all_minmax.csv
+					cat temp/fichier_temp.csv | sort -t ':' -k 2,2nr | head -n10 > tests/lv_all_minmax_$4.csv
+					cat temp/fichier_temp.csv | sort -t ':' -k 2,2nr | tail -n10 >> tests/lv_all_minmax_$4.csv
 				else
-					cat temp/fichier_temp.csv | sort -t ':' -k 2,2nr > tests/lv_all_minmax.csv
+					cat temp/fichier_temp.csv | sort -t ':' -k 2,2nr > tests/lv_all_minmax_$4.csv
 				fi
 				;;
 			*)
@@ -142,12 +142,12 @@ elif [[ "$#" == "5" ]] ; then
 				;;
 			"lv all")
 				cat "input/$1" | cut -d ';' -f 1,4,5,6,7,8 | tail -n +2 | tr '-' '0' | awk '{printf("%s;4\n", $0);}' | awk -F';' -v col4="$4" '$1==col4' | codeC/prg > temp/fichier_temp.csv
-				cat temp/fichier_temp.csv | sort -t ':' -k 2,2n > tests/lv_all.csv
+				cat temp/fichier_temp.csv | sort -t ':' -k 2,2n > tests/lv_all_$4.csv
 				if [[ $(wc -l < temp/fichier_temp.csv) -gt 20 ]] ; then
-					cat temp/fichier_temp.csv | sort -t ':' -k 2,2nr | head -n10 > tests/lv_all_minmax.csv
-					cat temp/fichier_temp.csv | sort -t ':' -k 2,2nr | tail -n10 >> tests/lv_all_minmax.csv
+					cat temp/fichier_temp.csv | sort -t ':' -k 2,2nr | head -n10 > tests/lv_all_minmax_$4.csv
+					cat temp/fichier_temp.csv | sort -t ':' -k 2,2nr | tail -n10 >> tests/lv_all_minmax_$4.csv
 				else
-					cat temp/fichier_temp.csv | sort -t ':' -k 2,2nr > tests/lv_all_minmax.csv
+					cat temp/fichier_temp.csv | sort -t ':' -k 2,2nr > tests/lv_all_minmax_$4.csv
 				fi
 				;;
 			*)
