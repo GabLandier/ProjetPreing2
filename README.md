@@ -1,11 +1,12 @@
-#Projet PréIng2
+# Projet PréIng2
 
-Ce projet continent un arbre qui trie les valeurs d'un fichier selon les paramètres demandés
-
-##Installation
+Ce projet continent un arbre qui trie les valeurs d'un fichier selon les paramètres donnéset crée en sortie un tableau contennat les résultats.
 
 
-##Utilisation
+## Fonctionnalités
+
+
+## Utilisation
 
 
 ##
@@ -15,7 +16,7 @@ Ce projet continent un arbre qui trie les valeurs d'un fichier selon les paramè
 
 les instructions pour compiler
 
- pour utiliser votre application
+pour utiliser votre application
 
 Il contiendra aussi un document au format PDF
 présentant la répartition des tâches au sein du groupe, 
