@@ -144,7 +144,7 @@ void infix(pTree pRoot){
     return;
   }
   infix(pRoot->pLeft);
-  printf("%d : %li : %li\n",pRoot->id, pRoot->capacity, pRoot->consumption);
+  printf("%d:%li:%li\n",pRoot->id, pRoot->capacity, pRoot->consumption);
   infix(pRoot->pRight);
 }
 
