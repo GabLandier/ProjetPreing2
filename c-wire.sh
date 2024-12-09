@@ -6,13 +6,12 @@ SOURCE="Makefile"
 
 DIRECTORY1="temp"
 
-DIRECTORY2="graphs"
-
 if [[ ! -f "codeC/$EXECUTABLE" ]] ; then
     echo "L'exécutable '$EXECUTABLE' est introuvable. Tentative de compilation..."
     if [ -f "codeC/$SOURCE" ] ; then
     	cd codeC
         make
+        cd ..
         if [[ $? -eq 0 ]] ; then
             echo "Compilation réussie. L'exécutable '$EXECUTABLE' a été généré."
         else
@@ -30,13 +29,6 @@ if [[ ! -r "$DIRECTORY1" ]] ; then
 else
 	rm -rf ./temp
 	mkdir temp
-fi
-
-if [[ ! -r "$DIRECTORY2" ]] ; then
-	mkdir graphs
-else
-	rm -rf ./graphs
-	mkdir graphs
 fi
 
 
@@ -185,6 +177,9 @@ else
 fi
 
 
+#verifier que le fichier data existe
 
+#etrier lv min max par capacité en trop
 
+#verifier avec un fichier dans le desordre
 
