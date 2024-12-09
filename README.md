@@ -15,7 +15,7 @@ les paramètres souhaité et crée en sortie un tableau contenant les résultats
 ## Utilisation
 
 1) Décompresser le dossier
-2) .Dans le terminal, exectuer :
+2) Dans le terminal, éxectuer :
 
 ```bash
 ./c-wire.sh nom_du_fichier option
@@ -24,15 +24,9 @@ les paramètres souhaité et crée en sortie un tableau contenant les résultats
 option:
 
 
-	• hvb
-
 	• hvb comp
 
-	• hva
-
 	• hva comp
-
-	• lv
 
 	• lv all
 
