@@ -1,5 +1,11 @@
 # Projet PréIng2
 
+## Sommaire
+
+1) [Description](#Description)
+2) [Focntionnalités](#Fonctionnalités)
+3) [Utilisation](#Utilisation)
+
 ## Description
 
 Ce projet contient un programme qui réalise la synthèse de données d’un système de distribution d’électricité contenu sous la forme d'un fichier .csv selon 
