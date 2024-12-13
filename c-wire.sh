@@ -8,6 +8,8 @@ DIRECTORY1="tmp"
 
 DIRECTORY2="tests"
 
+DIRECTORY3="graphs"
+
 if [[ ! -f "codeC/$EXECUTABLE" ]] ; then
     echo "L'exécutable '$EXECUTABLE' est introuvable. Tentative de compilation..."
     if [ -f "codeC/$SOURCE" ] ; then
@@ -45,6 +47,13 @@ if [[ ! -f "input/$1" ]] ; then
 	exit 2
 fi
 
+if [[ ! -r "$DIRECTORY3" ]] ; then
+	mkdir graphs
+else
+	rm -rf ./graphs
+	mkdir graphs
+fi
+
 A=$(date +%s.%N)
 
 if [[ "$#" == "3" ]] ; then
@@ -57,21 +66,25 @@ if [[ "$#" == "3" ]] ; then
 				cat "input/$1" | cut -d ';' -f 1,2,3,5,7,8 | tail -n +2 | tr '-' '0' | awk '{printf("%s;1\n", $0);}' | codeC/prg > tmp/fichier_temp.csv
 				echo "Station HV-B : Capacité : Consommation (entreprise)" > tests/hvb_comp.csv
 				cat tmp/fichier_temp.csv | sort -t ':' -k 2,2n >> tests/hvb_comp.csv
+				gnuplot plot/graph.plot
 				;;
 			"hva comp")
 				cat "input/$1" | cut -d ';' -f 1,3,4,5,7,8 | tail -n +2 | tr '-' '0' | awk '{printf("%s;1\n", $0);}' | codeC/prg > tmp/fichier_temp.csv
 				echo "Station HV-A : Capacité : Consommation (entreprise)" > tests/hva_comp.csv
 				cat tmp/fichier_temp.csv | sort -t ':' -k 2,2n >> tests/hva_comp.csv
+				gnuplot plot/graph.plot
 				;;
 			"lv comp")
 				cat "input/$1" | cut -d ';' -f 1,4,5,6,7,8 | tail -n +2 | tr '-' '0' | awk '{printf("%s;2\n", $0);}' | codeC/prg > tmp/fichier_temp.csv
 				echo "Station LV : Capacité : Consommation (entreprise)" > tests/lv_comp.csv
 				cat tmp/fichier_temp.csv | sort -t ':' -k 2,2n >> tests/lv_comp.csv
+				gnuplot plot/graph.plot
 				;;
 			"lv indiv")
 				cat "input/$1" | cut -d ';' -f 1,4,5,6,7,8 | tail -n +2 | tr '-' '0' | awk '{printf("%s;3\n", $0);}' | codeC/prg > tmp/fichier_temp.csv
 				echo "Station LV : Capacité : Consommation (particuliers)" > tests/lv_indiv.csv
 				cat tmp/fichier_temp.csv | sort -t ':' -k 2,2n >> tests/lv_indiv.csv
+				gnuplot plot/graph.plot
 				;;
 			"lv all")
 				cat "input/$1" | cut -d ';' -f 1,4,5,6,7,8 | tail -n +2 | tr '-' '0' | awk '{printf("%s;4\n", $0);}' | codeC/prg > tmp/fichier_temp.csv
@@ -85,6 +98,7 @@ if [[ "$#" == "3" ]] ; then
 				else
 					cat tmp/fichier_temp2.csv | sort -t ':' -k 4,4n | cut -d ':' -f 1,2,3 >> tests/lv_all_minmax.csv
 				fi
+				gnuplot plot/graph.plot
 				;;
 			*)
 				echo "Mauvaise combinaison"
@@ -102,21 +116,25 @@ elif [[ "$#" == "4" ]] ; then
 				cat "input/$1" | cut -d ';' -f 1,2,3,5,7,8 | tail -n +2 | tr '-' '0' | awk '{printf("%s;1\n", $0);}' | awk -F';' -v col4="$4" '$1==col4' | codeC/prg > tmp/fichier_temp.csv
 				echo "Station HV-B : Capacité : Consommation (entreprise)" > tests/hvb_comp_$4.csv
 				cat tmp/fichier_temp.csv | sort -t ':' -k 2,2n >> tests/hvb_comp_$4.csv
+				gnuplot plot/graph.plot
 				;;
 			"hva comp")
 				cat "input/$1" | cut -d ';' -f 1,3,4,5,7,8 | tail -n +2 | tr '-' '0' | awk '{printf("%s;1\n", $0);}' | awk -F';' -v col4="$4" '$1==col4' | codeC/prg > tmp/fichier_temp.csv
 				echo "Station HV-A : Capacité : Consommation (entreprise)" > tests/hva_comp_$4.csv
 				cat tmp/fichier_temp.csv | sort -t ':' -k 2,2n >> tests/hva_comp_$4.csv
+				gnuplot plot/graph.plot
 				;;
 			"lv comp")
 				cat "input/$1" | cut -d ';' -f 1,4,5,6,7,8 | tail -n +2 | tr '-' '0' | awk '{printf("%s;2\n", $0);}' | awk -F';' -v col4="$4" '$1==col4' | codeC/prg > tmp/fichier_temp.csv
 				echo "Station LV : Capacité : Consommation (entreprise)" > tests/lv_comp_$4.csv
 				cat tmp/fichier_temp.csv | sort -t ':' -k 2,2n >> tests/lv_comp_$4.csv
+				gnuplot plot/graph.plot
 				;;
 			"lv indiv")
 				cat "input/$1" | cut -d ';' -f 1,4,5,6,7,8 | tail -n +2 | tr '-' '0' | awk '{printf("%s;3\n", $0);}' | awk -F';' -v col4="$4" '$1==col4' | codeC/prg > tmp/fichier_temp.csv
 				echo "Station LV : Capacité : Consommation (particuliers)" > tests/lv_indiv_$4.csv
 				cat tmp/fichier_temp.csv | sort -t ':' -k 2,2n >> tests/lv_indiv_$4.csv
+				gnuplot plot/graph.plot
 				;;
 			"lv all")
 				cat "input/$1" | cut -d ';' -f 1,4,5,6,7,8 | tail -n +2 | tr '-' '0' | awk '{printf("%s;4\n", $0);}' | awk -F';' -v col4="$4" '$1==col4' | codeC/prg > tmp/fichier_temp.csv
@@ -125,11 +143,12 @@ elif [[ "$#" == "4" ]] ; then
 				cat tmp/fichier_temp.csv | sort -t ':' -k 2,2n >> tests/lv_all_$4.csv
 				echo "Station LV : Capacité : Consommation" > tests/lv_all_minmax_$4.csv
 				if [[ $(wc -l < tmp/fichier_temp.csv) -gt 20 ]] ; then
-					cat tmp/fichier_tmp2.csv | sort -t ':' -k 4,4n | cut -d ':' -f 1,2,3 | head -n10 >> tests/lv_all_minmax_$4.csv
+					cat tmp/fichier_temp2.csv | sort -t ':' -k 4,4n | cut -d ':' -f 1,2,3 | head -n10 >> tests/lv_all_minmax_$4.csv
 					cat tmp/fichier_temp2.csv | sort -t ':' -k 4,4n | cut -d ':' -f 1,2,3 | tail -n10 >> tests/lv_all_minmax_$4.csv
 				else
 					cat tmp/fichier_temp2.csv | sort -t ':' -k 4,4n | cut -d ':' -f 1,2,3 >> tests/lv_all_minmax_$4.csv
 				fi
+				gnuplot plot/graph.plot
 				;;
 			*)
 				echo "Mauvaise combinaison"
@@ -150,21 +169,25 @@ elif [[ "$#" == "5" ]] ; then
 				cat "input/$1" | cut -d ';' -f 1,2,3,5,7,8 | tail -n +2 | tr '-' '0' | awk '{printf("%s;1\n", $0);}' | awk -F';' -v col4="$4" '$1==col4' | codeC/prg > tmp/fichier_temp.csv
 				echo "Station HV-B : Capacité : Consommation (entreprise)" > tests/hvb_comp_$4.csv
 				cat tmp/fichier_temp.csv | sort -t ':' -k 2,2n >> tests/hvb_comp_$4.csv
+				gnuplot plot/graph.plot
 				;;
 			"hva comp")
 				cat "input/$1" | cut -d ';' -f 1,3,4,5,7,8 | tail -n +2 | tr '-' '0' | awk '{printf("%s;1\n", $0);}' | awk -F';' -v col4="$4" '$1==col4' | codeC/prg > tmp/fichier_temp.csv
 				echo "Station HV-A : Capacité : Consommation (entreprise)" > tests/hva_comp_$4.csv
 				cat tmp/fichier_temp.csv | sort -t ':' -k 2,2n >> tests/hva_comp_$4.csv
+				gnuplot plot/graph.plot
 				;;
 			"lv comp")
 				cat "input/$1" | cut -d ';' -f 1,4,5,6,7,8 | tail -n +2 | tr '-' '0' | awk '{printf("%s;2\n", $0);}' | awk -F';' -v col4="$4" '$1==col4' | codeC/prg > tmp/fichier_temp.csv
 				echo "Station LV : Capacité : Consommation (entreprise)" > tests/lv_comp_$4.csv
 				cat tmp/fichier_temp.csv | sort -t ':' -k 2,2n >> tests/lv_comp_$4.csv
+				gnuplot plot/graph.plot
 				;;
 			"lv indiv")
 				cat "input/$1" | cut -d ';' -f 1,4,5,6,7,8 | tail -n +2 | tr '-' '0' | awk '{printf("%s;3\n", $0);}' | awk -F';' -v col4="$4" '$1==col4' | codeC/prg > tmp/fichier_temp.csv
 				echo "Station LV : Capacité : Consommation (particuliers)" > tests/lv_indiv_$4.csv
 				cat tmp/fichier_temp.csv | sort -t ':' -k 2,2n >> tests/lv_indiv_$4.csv
+				gnuplot plot/graph.plot
 				;;
 			"lv all")
 				cat "input/$1" | cut -d ';' -f 1,4,5,6,7,8 | tail -n +2 | tr '-' '0' | awk '{printf("%s;4\n", $0);}' | awk -F';' -v col4="$4" '$1==col4' | codeC/prg > tmp/fichier_temp.csv
@@ -178,6 +201,7 @@ elif [[ "$#" == "5" ]] ; then
 				else
 					cat tmp/fichier_temp2.csv | sort -t ':' -k 4,4n | cut -d ':' -f 1,2,3 >> tests/lv_all_minmax_$4.csv
 				fi
+				gnuplot plot/graph.plot
 				;;
 			*)
 				echo "Mauvaise combinaison"
