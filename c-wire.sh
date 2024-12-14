@@ -10,6 +10,27 @@ DIRECTORY2="tests"
 
 DIRECTORY3="graphs"
 
+DIRECTORY4="codeC"
+
+DIRECTORY5="input"
+
+DIRECTORY6="plot"
+
+if [[ ! -r "$DIRECTORY4" ]] ; then
+	echo "Le fichier codeC est introuvable"
+	exit 1
+fi
+
+if [[ ! -r "$DIRECTORY5" ]] ; then
+	echo "Le fichier input est introuvable"
+	exit 1
+fi
+
+if [[ ! -r "$DIRECTORY6" ]] ; then
+	echo "Le fichier plot est introuvable"
+	exit 1
+fi
+
 if [[ ! -f "codeC/$EXECUTABLE" ]] ; then
     echo "L'exécutable '$EXECUTABLE' est introuvable. Tentative de compilation..."
     if [ -f "codeC/$SOURCE" ] ; then
@@ -25,7 +46,6 @@ if [[ ! -f "codeC/$EXECUTABLE" ]] ; then
         fi
     else
         echo "Erreur : le fichier source '$SOURCE' est introuvable."
-        echo "Temps d'execution : 0.0"
         exit 1
     fi
 fi
@@ -41,10 +61,20 @@ if [[ ! -r "$DIRECTORY2" ]] ; then
 	mkdir tests
 fi
 
+if [[ "$1" == "-h" ]] ; then
+	echo ""
+	echo "Aide : ./c-wire <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
+	echo "                                  hvb               comp"
+	echo "                                  hva               indiv"
+	echo "                                  lv                all"
+	echo "       Combinaisons impossibles : hvb indiv / hvb all / hva indiv / hva all " 
+	echo ""
+	exit 1
+fi
+
 if [[ ! -f "input/$1" ]] ; then
 	echo "Le fichier que vous voulez analyser n'existe pas."
-	echo "Temps d'execution : 0.0"
-	exit 2
+	exit 1
 fi
 
 if [[ ! -r "$DIRECTORY3" ]] ; then
@@ -54,11 +84,19 @@ else
 	mkdir graphs
 fi
 
-A=$(date +%s.%N)
+
+
+A=$(date +%s)
 
 if [[ "$#" == "3" ]] ; then
 	if [[ "$1" == "-h" || "$2" == "-h" || "$3" == "-h" ]] ; then
-		echo "Voila l'aide"
+		echo ""
+		echo "Aide : ./c-wire <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
+		echo "                                  hvb               comp"
+		echo "                                  hva               indiv"
+		echo "                                  lv                all"
+		echo "       Combinaisons impossibles : hvb indiv / hvb all / hva indiv / hva all " 
+		echo ""
 	else 
 		case "$2 $3" in 
 	
@@ -102,13 +140,26 @@ if [[ "$#" == "3" ]] ; then
 				;;
 			*)
 				echo "Mauvaise combinaison"
+				echo ""
+				echo "Aide : ./c-wire <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
+				echo "                                  hvb               comp"
+				echo "                                  hva               indiv"
+				echo "                                  lv                all"
+				echo "       Combinaisons impossibles : hvb indiv / hvb all / hva indiv / hva all " 
+				echo ""
 				;;
 		esac
 	fi
 
 elif [[ "$#" == "4" ]] ; then
 	if [[ "$1" == "-h" || "$2" == "-h" || "$3" == "-h" || "$4" == "-h" ]] ; then
-		echo "Voila l'aide"
+		echo ""
+		echo "Aide : ./c-wire <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
+		echo "                                  hvb               comp"
+		echo "                                  hva               indiv"
+		echo "                                  lv                all"
+		echo "       Combinaisons impossibles : hvb indiv / hvb all / hva indiv / hva all "  
+		echo ""
 	else 
 		case "$2 $3" in 
 	
@@ -152,16 +203,35 @@ elif [[ "$#" == "4" ]] ; then
 				;;
 			*)
 				echo "Mauvaise combinaison"
+				echo ""
+				echo "Aide : ./c-wire <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
+				echo "                                  hvb               comp"
+				echo "                                  hva               indiv"
+				echo "                                  lv                all"
+				echo "       Combinaisons impossibles : hvb indiv / hvb all / hva indiv / hva all "  
+				echo ""
 				;;
 		esac
 	fi
 	
 elif [[ "$#" == "5" ]] ; then
 	if [[ "$1" == "-h" || "$2" == "-h" || "$3" == "-h" || "$4" == "-h" || "$5" == "-h" ]] ; then
-		echo "Voila l'aide"
+		echo ""
+		echo "Aide : ./c-wire <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
+		echo "                                  hvb               comp"
+		echo "                                  hva               indiv"
+		echo "                                  lv                all"
+		echo "       Combinaisons impossibles : hvb indiv / hvb all / hva indiv / hva all "  
+		echo ""
 	elif [[ "$5" != "-h" ]] ; then
 		echo "Mauvaise combinaison"
-		echo "Voila l'aide"
+		echo ""
+		echo "Aide : ./c-wire <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
+		echo "                                  hvb               comp"
+		echo "                                  hva               indiv"
+		echo "                                  lv                all"
+		echo "       Combinaisons impossibles : hvb indiv / hvb all / hva indiv / hva all "  
+		echo ""
 	else 
 		case "$2 $3" in 
 	
@@ -205,16 +275,30 @@ elif [[ "$#" == "5" ]] ; then
 				;;
 			*)
 				echo "Mauvaise combinaison"
+				echo ""
+				echo "Aide : ./c-wire <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
+				echo "                                  hvb               comp"
+				echo "                                  hva               indiv"
+				echo "                                  lv                all"
+				echo "       Combinaisons impossibles : hvb indiv / hvb all / hva indiv / hva all " 
+				echo ""
 				;;
 		esac
 	fi
 
 else
 	echo "Pas assez ou trop d'éléments"
+	echo ""
+	echo "Aide : ./c-wire <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
+	echo "                                  hvb               comp"
+	echo "                                  hva               indiv"
+	echo "                                  lv                all"
+	echo "       Combinaisons impossibles : hvb indiv / hvb all / hva indiv / hva all " 
+	echo ""
 
 fi
 
-B=$(date +%s.%N)
+B=$(date +%s)
 
 echo "Temps d'execution : " 
 echo "$B - $A" | bc
