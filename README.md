@@ -46,7 +46,7 @@ L'option "-h" peut vous aider à obtenir plus d'aide.
 
 ## Récuperation des résultats
 <a id="Récuperation_des_résultats"></a>
-
+Tous les résultats de l'exécution du code sont déposés dans le dossier créé automatiquement, nommé "output".
 
 ## Auteurs  
 
