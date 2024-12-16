@@ -6,6 +6,7 @@
 2) [Fonctionnalités](#Fonctionnalités)  
 3) [Utilisation](#Utilisation)
 4) [Récuperation des résultats](#Récuperation_des_résultats)
+5) [Compte rendu](#Compte)
 
 ## Description  
 
@@ -47,6 +48,11 @@ L'option "-h" peut vous aider à obtenir plus d'aide.
 ## Récuperation des résultats
 <a id="Récuperation_des_résultats"></a>
 Tous les résultats de l'exécution du code sont déposés dans le dossier créé automatiquement, nommé "output".
+
+## Compte rendu
+<a id="Compte"></a>
+[Voir le fichier PDF](docs/Compte Rendu.pdf)
+
 
 ## Auteurs  
 
