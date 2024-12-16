@@ -4,7 +4,8 @@
 
 1) [Description](#Description)  
 2) [Fonctionnalités](#Fonctionnalités)  
-3) [Utilisation](#Utilisation)  
+3) [Utilisation](#Utilisation)
+4) [Récuperation des résultats](#Récuperation)
 
 ## Description  
 
@@ -41,7 +42,9 @@ Le numéro de la centrale peut être ajouté à la suite de l'option.
 
 L'option "-h" peut vous aider à obtenir plus d'aide.  
 
-4) Le fichier .csv contenant le résultat de l'exécution est créé.  
+4) Le fichier .csv contenant le résultat de l'exécution est créé.
+
+## Récuperation des résultats
 
 ## Auteurs  
 
