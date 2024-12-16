@@ -112,6 +112,7 @@ pTree insertTree(pTree pRoot, pTree pNew, int* h){
   else if (pRoot->id==pNew->id){
     pRoot->capacity+=pNew->capacity;
     pRoot->consumption+=pNew->consumption;
+    free(pNew);
     *h=0;
     return pRoot;
   }
@@ -156,3 +157,4 @@ void freeAVL(pTree pRoot){
   freeAVL(pRoot->pRight);
   free(pRoot);
 }
+
