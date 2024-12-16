@@ -49,9 +49,11 @@ L'option "-h" peut vous aider à obtenir plus d'aide.
 <a id="Récuperation_des_résultats"></a>
 Tous les résultats de l'exécution du code sont déposés dans le dossier créé automatiquement, nommé "output".
 
-## Compte rendu
-<a id="Compte"></a>
-[Voir le fichier PDF](ProjetPreing2/Compte Rendu.pdf)
+## Compte Rendu  
+<a id="Compte"></a>  
+
+[Voir le fichier PDF](ProjetPreing2/Compte%20Rendu.pdf)  
+
 
 
 ## Auteurs  
