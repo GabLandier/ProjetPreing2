@@ -51,7 +51,7 @@ Tous les résultats de l'exécution du code sont déposés dans le dossier cré�
 
 ## Compte rendu
 <a id="Compte"></a>
-[Voir le fichier PDF](docs/Compte Rendu.pdf)
+[Voir le fichier PDF](ProjetPreing2/Compte Rendu.pdf)
 
 
 ## Auteurs  
