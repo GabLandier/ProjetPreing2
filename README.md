@@ -5,7 +5,7 @@
 1) [Description](#Description)  
 2) [Fonctionnalités](#Fonctionnalités)  
 3) [Utilisation](#Utilisation)
-4) [Récuperation des résultats](#Récuperation)
+4) [Récuperation des résultats](#Récuperation_des_résultats)
 
 ## Description  
 
