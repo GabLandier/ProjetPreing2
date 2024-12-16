@@ -21,7 +21,8 @@ les paramètres souhaité et crée en sortie un tableau contenant les résultats
 ## Utilisation
 
 1) Décompresser le dossier
-2) Dans le terminal, éxectuer :
+2) Déposer le fichier utilisé dans un dossier "input" créé préalablement
+3) Dans le terminal, éxectuer :
 
 ```bash
 ./c-wire.sh nom_du_fichier option
