@@ -44,7 +44,7 @@ L'option "-h" peut vous aider à obtenir plus d'aide.
 
 4) Le fichier .csv contenant le résultat de l'exécution est créé.
 
-## Récuperation des résultats
+## Récuperation_des_résultats
 
 ## Auteurs  
 
