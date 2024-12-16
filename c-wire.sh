@@ -46,6 +46,13 @@ if [[ ! -f "codeC/$EXECUTABLE" ]] ; then
         fi
     else
         echo "Erreur : le fichier source '$SOURCE' est introuvable."
+        echo ""
+				echo "Aide : ./c-wire.sh <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
+				echo "                                  hvb               comp"
+				echo "                                  hva               indiv"
+				echo "                                  lv                all"
+				echo "       Combinaisons impossibles : hvb indiv / hvb all / hva indiv / hva all "  
+				echo ""
         exit 1
     fi
 fi
@@ -63,7 +70,7 @@ fi
 
 if [[ "$1" == "-h" ]] ; then
 	echo ""
-	echo "Aide : ./c-wire <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
+	echo "Aide : ./c-wire.sh <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
 	echo "                                  hvb               comp"
 	echo "                                  hva               indiv"
 	echo "                                  lv                all"
@@ -74,6 +81,13 @@ fi
 
 if [[ ! -f "input/$1" ]] ; then
 	echo "Le fichier que vous voulez analyser n'existe pas."
+	echo ""
+				echo "Aide : ./c-wire.sh <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
+				echo "                                  hvb               comp"
+				echo "                                  hva               indiv"
+				echo "                                  lv                all"
+				echo "       Combinaisons impossibles : hvb indiv / hvb all / hva indiv / hva all "  
+				echo ""
 	exit 1
 fi
 
@@ -84,14 +98,12 @@ else
 	mkdir graphs
 fi
 
-
-
 A=$(date +%s)
 
 if [[ "$#" == "3" ]] ; then
 	if [[ "$1" == "-h" || "$2" == "-h" || "$3" == "-h" ]] ; then
 		echo ""
-		echo "Aide : ./c-wire <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
+		echo "Aide : ./c-wire.sh <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
 		echo "                                  hvb               comp"
 		echo "                                  hva               indiv"
 		echo "                                  lv                all"
@@ -141,7 +153,7 @@ if [[ "$#" == "3" ]] ; then
 			*)
 				echo "Mauvaise combinaison"
 				echo ""
-				echo "Aide : ./c-wire <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
+				echo "Aide : ./c-wire.sh <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
 				echo "                                  hvb               comp"
 				echo "                                  hva               indiv"
 				echo "                                  lv                all"
@@ -154,7 +166,7 @@ if [[ "$#" == "3" ]] ; then
 elif [[ "$#" == "4" ]] ; then
 	if [[ "$1" == "-h" || "$2" == "-h" || "$3" == "-h" || "$4" == "-h" ]] ; then
 		echo ""
-		echo "Aide : ./c-wire <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
+		echo "Aide : ./c-wire.sh <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
 		echo "                                  hvb               comp"
 		echo "                                  hva               indiv"
 		echo "                                  lv                all"
@@ -204,7 +216,7 @@ elif [[ "$#" == "4" ]] ; then
 			*)
 				echo "Mauvaise combinaison"
 				echo ""
-				echo "Aide : ./c-wire <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
+				echo "Aide : ./c-wire.sh <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
 				echo "                                  hvb               comp"
 				echo "                                  hva               indiv"
 				echo "                                  lv                all"
@@ -217,7 +229,7 @@ elif [[ "$#" == "4" ]] ; then
 elif [[ "$#" == "5" ]] ; then
 	if [[ "$1" == "-h" || "$2" == "-h" || "$3" == "-h" || "$4" == "-h" || "$5" == "-h" ]] ; then
 		echo ""
-		echo "Aide : ./c-wire <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
+		echo "Aide : ./c-wire.sh <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
 		echo "                                  hvb               comp"
 		echo "                                  hva               indiv"
 		echo "                                  lv                all"
@@ -226,7 +238,7 @@ elif [[ "$#" == "5" ]] ; then
 	elif [[ "$5" != "-h" ]] ; then
 		echo "Mauvaise combinaison"
 		echo ""
-		echo "Aide : ./c-wire <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
+		echo "Aide : ./c-wire.sh <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
 		echo "                                  hvb               comp"
 		echo "                                  hva               indiv"
 		echo "                                  lv                all"
@@ -276,7 +288,7 @@ elif [[ "$#" == "5" ]] ; then
 			*)
 				echo "Mauvaise combinaison"
 				echo ""
-				echo "Aide : ./c-wire <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
+				echo "Aide : ./c-wire.sh <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
 				echo "                                  hvb               comp"
 				echo "                                  hva               indiv"
 				echo "                                  lv                all"
@@ -289,7 +301,7 @@ elif [[ "$#" == "5" ]] ; then
 else
 	echo "Pas assez ou trop d'éléments"
 	echo ""
-	echo "Aide : ./c-wire <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
+	echo "Aide : ./c-wire.sh <nom du fichier> <type de station> <type de consommateur> <numéro de centrale (optionnel)>"
 	echo "                                  hvb               comp"
 	echo "                                  hva               indiv"
 	echo "                                  lv                all"
