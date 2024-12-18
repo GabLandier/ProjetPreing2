@@ -1,5 +1,7 @@
 #include "bibli.h"
 
+
+// Fonction pour retourner le maximum entre deux entiers
 int max(int a,int b){
   if (a>b){
     return a;
@@ -9,6 +11,7 @@ int max(int a,int b){
   }
 }
 
+// Fonction pour retourner le minimum entre deux entiers
 int min(int a,int b){
   if (a<b){
     return a;
@@ -18,6 +21,9 @@ int min(int a,int b){
   }
 }
 
+/* Fonction pour créer un nouveau nœud dans l'arbre AVL.
+Prend en entrée un identifiant, une capacité et une consommation.
+ Retourne un pointeur vers le nouveau nœud*/
 pTree createTree(int id,long int capacity, long int consumption){
   pTree pNew=malloc(sizeof(Tree));
   if (pNew==NULL){
@@ -32,6 +38,7 @@ pTree createTree(int id,long int capacity, long int consumption){
   return pNew;
 }
 
+// Fonction pour effectuer une rotation gauche sur un nœud donné.
 pTree leftRotation(pTree pRoot){
   if (pRoot==NULL){
     exit(3);
@@ -48,6 +55,7 @@ pTree leftRotation(pTree pRoot){
   return pRoot;
 }
 
+// Fonction pour effectuer une rotation droite sur un nœud donné
 pTree rightRotation(pTree pRoot){
   if (pRoot==NULL){
     exit(4);
@@ -64,6 +72,7 @@ pTree rightRotation(pTree pRoot){
   return pRoot;
 }
 
+// Fonction pour effectuer une double rotation gauche (droite + gauche)
 pTree doubleLeftRotation(pTree pRoot){
   if (pRoot==NULL){
     exit(5);
@@ -72,6 +81,7 @@ pTree doubleLeftRotation(pTree pRoot){
   return leftRotation(pRoot);
 }
 
+// Fonction pour effectuer une double rotation droite (gauche + droite)
 pTree doubleRightRotation(pTree pRoot){
   if (pRoot==NULL){
     exit(6);
@@ -80,6 +90,7 @@ pTree doubleRightRotation(pTree pRoot){
   return rightRotation(pRoot);
 }
 
+// Fonction pour équilibrer un arbre AVL en fonction du facteur d'équilibre
 pTree balancingTree(pTree pRoot){
   if (pRoot->balance >= 2){
     if (pRoot->pRight->balance >= 0){
@@ -100,7 +111,8 @@ pTree balancingTree(pTree pRoot){
   return pRoot; 
 }
 
-
+/* Fonction pour insérer un nœud dans un arbre AVL
+Met à jour le facteur d'équilibre et rééquilibre si nécessaire */
 pTree insertTree(pTree pRoot, pTree pNew, int* h){
   if (pNew==NULL){
     exit(2);
@@ -140,6 +152,7 @@ pTree insertTree(pTree pRoot, pTree pNew, int* h){
   return pRoot;
 }
 
+// Parcours infixe de l'arbre pour afficher les nœuds dans l'ordre croissant
 void infix(pTree pRoot){
   if (pRoot==NULL){
     return;
@@ -149,6 +162,7 @@ void infix(pTree pRoot){
   infix(pRoot->pRight);
 }
 
+// Libération de la mémoire allouée pour l'arbre AVL.
 void freeAVL(pTree pRoot){
   if (pRoot==NULL){
     return;

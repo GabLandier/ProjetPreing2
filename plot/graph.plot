@@ -4,29 +4,27 @@ set output 'graphs/graph.png'
 
 # Couleur de fond et grille
 set style fill solid 1.00 noborder
-set object 1 rectangle from screen 0,0 to screen 1,1 behind fillcolor rgb "white"  # Fond blanc
+set object 1 rectangle from screen 0,0 to screen 1,1 behind fillcolor rgb "white"
 set border lc rgb "black"
 set grid lc rgb "gray"
 
 # Titre et étiquettes
-set title "Consommation par rapport à la capcité" font ",14"
+set title "Postes LV les plus et moins chargés" font ",14"
 set xlabel "ID des stations"
-set ylabel "Capacité - Consommation"
-set xrange [ * : * ]
-set yrange [ * : * ]
-
-# Ligne de référence y=0
-set style line 10 lw 1 lc rgb "black"  # Style pour y=0
+set ylabel "Consommation / Capacité"
+set xtics rotate by -45 font ",8"
 
 # Séparateur de colonnes
 set datafile separator ":"
 
-# Paramètres des abscisses
-set xtics auto
+# Paramètres des barres
+set style data histograms
+set style histogram clustered gap 1
+set boxwidth 0.8 relative
+set style fill solid 0.5 border -1
 
-# Tracer la courbe capacité - consommation
+# Tracer les barres
 plot \
-    0 with lines ls 10 title "y=0", \
-    'tmp/fichier_temp.csv' using 1:($2 - $3 > 0 ? $2 - $3 : 1/0) with filledcurves y1=0 lc rgb "#60E0A0" title "Capacité > Consommation", \
-    '' using 1:($2 - $3 < 0 ? $2 - $3 : 1/0) with filledcurves y1=0 lc rgb "#E06090" title "Below (Capacité < Consommation)"
+    'tmp/lv_all_minmaxtmp.csv' using 2:xtic(1) title "Capacité" lc rgb "#60E0A0", \
+    '' using 3 title "Consommation" lc rgb "#E06090"
 
