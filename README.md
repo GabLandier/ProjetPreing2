@@ -21,7 +21,7 @@ Ce projet contient un programme qui réalise la synthèse de données d’un sys
 
 ## Utilisation  
 
-1) Décompresser le dossier  
+1) Récupérer le dossier
 2) Déposer le fichier utilisé dans un dossier "input" créé préalablement  
 3) Dans le terminal, exécuter :  
 
