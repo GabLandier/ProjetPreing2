@@ -23,8 +23,8 @@ set style histogram clustered gap 1
 set boxwidth 0.8 relative
 set style fill solid 0.5 border -1
 
-# Tracer les barres
+# Tracer les barres avec des couleurs conditionnelles
 plot \
-    'tmp/lv_all_minmaxtmp.csv' using 2:xtic(1) title "Capacité" lc rgb "#60E0A0", \
-    '' using 3 title "Consommation" lc rgb "#E06090"
+    'tmp/lv_all_minmaxtmp.csv' using ( ($2 - $3) > 0 ? $2 - $3 : 0 ):xtic(1) title "Capacité - Consommation" lc rgb "#60E0A0" fillstyle solid 1.0, \
+    '' using ( ($3 - $2) > 0 ? $3 - $2 : 0 ):xtic(1) title "Consommation - Capacité" lc rgb "#E06090" fillstyle solid 1.0
 
